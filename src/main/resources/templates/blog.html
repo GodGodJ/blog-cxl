@@ -43,32 +43,34 @@
 				<div class="ui top attached segment">
 					<div class="ui  horizontal link list">
 						<div class="item">
-							<img src="../static/images/four.png" th:src="@{/images/four.png}" width="1" height="40" alt="" class="ui avatar image">
-							<div class="content"><a class="header">陈兴亮</a></div>
+							<img src="../static/images/four.png" th:src="@{${blog.user.avatar}}" width="1" height="40" alt="" class="ui avatar image">
+							<div class="content"><a class="header" th:text="${blog.user.nickname}">陈兴亮</a></div>
 						</div>
 						<div class="item">
-							<i class="calendar icon"></i> 2020-04-24
+							<i class="calendar icon"></i> <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2020-04-24</span>
 						</div>
 						<div class="item">
-							<i class="eye icon"></i>2755
+							<i class="eye icon"></i><span th:text="${blog.views}">2755</span>
 						</div>
 					</div>
 				</div>
 				<div class="ui attached segment">
 					<!-- 图片区域 -->
-					<img src="https://unsplash.it/800/450?image=1005" alt="" class="ui fluid rounded image">
+					<img src="https://unsplash.it/800/450?image=1005" th:src="@{${blog.firstPicture}}" alt="" class="ui fluid rounded image">
 				</div>
 				<div class="ui attached padded segment">
 					<!-- 内容 -->
 					<div class="ui right aligned basic segment">
-						<div class="ui orange basic label">
+						<div class="ui orange basic label" th:text="${blog.flag}">
 							原创
 						</div>
 					</div>
-					<h2 class="ui center aligned header">
+					<h2 class="ui center aligned header" th:text="${blog.title}">
 						关于刻意练习的清单
 					</h2>
-					<div id="content" class="typo  typo-selection js-toc-content m-padded-lr-reponsive m-padded-tb-large">
+					<br>
+					<!--中间主要内容部分-->
+					<div id="content" class="typo  typo-selection js-toc-content m-padded-lr-reponsive m-padded-tb-large" th:text="${blog.content}">
 						<h2 id="section1">一、关于 <i class="serif">Typo.css</i></h2>
 						
 						<pre><code class="language-css">p { color: red }</code></pre>
@@ -430,7 +432,7 @@
 					
 					<!-- 标签 -->
 					<div class="m-padded-lr m-padded-tb-large">
-						<div class="ui basic teal left pointing label">
+						<div class="ui basic teal left pointing label" th:each="tag : ${blog.tags}" th:text=${tag.name}">
 							方法论
 						</div>
 					</div>
@@ -445,11 +447,11 @@
 						<div class="ui orange basic label">
 							<div class="ui images" style="font-size: inherit !important;">
 								<div class="image">
-									<img src="../static/images/wechat.jpg" th:src="@{/images/wechat}" alt="" class="ui rounded bordered image" style="width: 120px;">
+									<img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt="" class="ui rounded bordered image" style="width: 120px;">
 									<div>支付宝支付</div>
 								</div>
 								<div class="image">
-									<img src="../static/images/wechat.jpg" th:src="@{/images/wechat}" alt="" class="ui rounded bordered image" style="width: 120px;">
+									<img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt="" class="ui rounded bordered image" style="width: 120px;">
 									<div>微信</div>
 								</div>
 							</div>
@@ -463,14 +465,14 @@
 					<div class="ui middle aligned grid">
 						<div class="eleven wide column">
 							<ui class="list">
-								<li>作者：李仁密（联系作者）</li>
-								<li>发表时间：2017-10-02 09:08</li>
+								<li>作者：<span th:text="${blog.user.nickname}">李仁密</span><a href="#" th:href="@{/about}" target="_blank">（联系作者）</a></li>
+								<li>发表时间：<span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd HH:mm')}}">2017-10-02 09:08</span></li>
 								<li>版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</li>
 								 <li>公众号转载：请在文末添加作者公众号二维码</li>
 							</ui>
 						</div>
 						<div class="five wide column">
-							<img src="../static/images/wechat.jpg" th:src="@{/images/wechat}" alt="" class="ui right floated rounded bordered image" style="width: 110px;">
+							<img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt="" class="ui right floated rounded bordered image" style="width: 110px;">
 						</div>
 					</div>
 				</div>
