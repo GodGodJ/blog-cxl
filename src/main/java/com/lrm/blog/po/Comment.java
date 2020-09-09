@@ -25,7 +25,17 @@ public class Comment {
     @ManyToOne
     private Comment parentComment;
 
+    private boolean adminComment;
+
     public Comment() {
+    }
+
+    public boolean isAdminComment() {
+        return adminComment;
+    }
+
+    public void setAdminComment(boolean adminComment) {
+        this.adminComment = adminComment;
     }
 
     @Override
@@ -37,6 +47,10 @@ public class Comment {
                 ", content='" + content + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", createTime=" + createTime +
+                ", blog=" + blog +
+                ", replyComments=" + replyComments +
+                ", parentComment=" + parentComment +
+                ", adminComment=" + adminComment +
                 '}';
     }
 

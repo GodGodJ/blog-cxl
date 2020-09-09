@@ -6,3 +6,7 @@ spring:
       content-type: text/html
   profiles:
     active: dev
+
+
+
+comment.avatar: /images/avatar.png
