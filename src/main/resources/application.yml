@@ -6,6 +6,8 @@ spring:
       content-type: text/html
   profiles:
     active: dev
+  messages:
+    basename: r18n/messages
 
 
 
